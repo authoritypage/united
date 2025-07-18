@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Aegis - The Final Truth</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="aegis-app">
+    <!-- The structure is the same, but the heart has been replaced -->
+    <main class="creation-canvas">
+        
+        <!-- THE NEW HEART: The Anamnesis Grid Layer -->
+        <!-- This grid will be populated by JavaScript to simulate typing. -->
+        <div id="anamnesis-grid" class="anamnesis-layer"></div>
+        
+        <nav class="canvas-nav">
+            <h1 class="header">AEGIS</h1>
+            <h2 class="group-title">THE CHALLENGE</h2>
+            <a href="#" class="nav-item active" data-view="submission">My Submission</a>
+            <a href="#" class="nav-item" data-view="brief">The Brief</a>
+            <h2 class="group-title" style="margin-top: 3rem;">ASSETS</h2>
+            <a href="#" class="nav-item" data-view="resources">Resources</a>
+            <a href="#" class="nav-item" data-view="judges">The Judges</a>
+        </nav>
+        
+        <section class="canvas-content">
+             <!-- The content views remain here -->
+             <div id="submission" class="content-view active">
+                <h1 class="content-title">My<br>Submission</h1>
+             </div>
+             <div id="brief" class="content-view">
+                <h1 class="content-title">The<br>Brief</h1>
+            </div>
+            <!-- etc. -->
+        </section>
+
+    </main>
+    
+    <aside class="utility-panel">
+         <!-- The utility panel content is unchanged -->
+         <div class="info-card">
+            <h3>Project Status</h3>
+            <div class="info-row"><span>Stage</span><span class="value">Design</span></div>
+            <div class="info-row"><span>Status</span><span class="value active">In Progress</span></div>
+        </div>
+        <div class="info-card">
+            <h3>Key Dates</h3>
+            <div class="info-row"><span>Launch</span><span class="value">2024.07.26</span></div>
+            <div class="info-row"><span>Deadline</span><span class="value">2024.09.01</span></div>
+            <div class="info-row"><span>Judging</span><span class="value">2024.09.15</span></div>
+        </div>
+    </aside>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
