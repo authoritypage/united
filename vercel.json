@@ -1,12 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "*.*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  "name": "Project Aegis",
+  "short_name": "Aegis",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "description": "The definitive UX challenge application."
 }

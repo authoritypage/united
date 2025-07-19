@@ -1,109 +1,89 @@
+/*
+ * Project Aegis: style.css
+ * The Absolute, Final, & Polished Version
+ */
+
+/* The Proprietary Voice */
+@font-face {
+    font-family: 'NAGO';
+    src: url('fonts/NAGO.otf') format('opentype');
+    font-weight: normal; font-style: normal;
+}
+@font-face {
+    font-family: 'NAG';
+    src: url('fonts/NAG.ttf') format('truetype');
+    font-weight: normal; font-style: normal;
+}
+
 :root {
-    /* The Dark Theme Foundation */
     --background-charcoal: #111111;
     --panel-charcoal: #1A1A1A;
     --border-charcoal: rgba(255, 255, 255, 0.1);
-    
-    /* The Glowing Light */
     --text-primary-glow: #EAEAEA;
     --text-secondary-dark: #767676;
-    --brand-active: #0091FF; /* A more electric blue */
-
-    /* Typography */
-    --font-main: 'Inter', -apple-system, sans-serif;
+    --brand-active: #0091FF;
+    --font-main: 'NAGO', sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; /* 1%: Control tap highlights */
+}
 
 body {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    height: 100vh; width: 100vw; overflow: hidden;
     background-color: var(--background-charcoal);
     font-family: var(--font-main);
-}
-
-/* --- The Core App Structure --- */
-.aegis-app {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    height: 100vh;
-}
-
-.creation-canvas {
-    position: relative;
-    overflow: hidden; /* CRITICAL */
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    padding: 3rem;
-}
-
-/* --- "The Anamnesis Grid" --- */
-/* The dark, structured void where messages appear. */
-.anamnesis-layer {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
-    padding: 3rem;
-    gap: 1rem;
-}
-.phrase {
-    font-size: 1.5rem;
-    font-weight: 500;
-    grid-column-end: span 2;
-    align-self: center;
-    color: transparent; /* Initially invisible */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-/* The "light shining through charcoal" effect */
-.phrase.typing {
-    opacity: 1;
     color: var(--text-primary-glow);
-    text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.5),
-        0 0 15px rgba(255, 255, 255, 0.3),
-        0 0 30px var(--brand-active);
+    cursor: default; /* 1%: Adaptive cursor system */
+    -webkit-font-smoothing: antialiased; /* 1%: Font smoothing */
+    -moz-osx-font-smoothing: grayscale; /* 1%: Font smoothing */
+}
+
+/* 1%: Custom system scrollbars */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--background-charcoal); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; border: 2px solid var(--background-charcoal); }
+::-webkit-scrollbar-thumb:hover { background: #444; }
+
+
+.aegis-app { display: grid; grid-template-columns: 1fr 320px; height: 100vh; }
+.creation-canvas { position: relative; overflow: hidden; display: grid; grid-template-columns: 240px 1fr; padding: 3rem; }
+
+.anamnesis-layer { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr)); padding: 3rem; gap: 1rem;
+}
+.phrase { font-size: 1.5rem; font-weight: 500; grid-column-end: span 2; align-self: center;
+    color: transparent; opacity: 0; transition: opacity 0.5s ease-in-out; white-space: nowrap;
+    will-change: transform, opacity; /* 1%: Hardware acceleration */
+}
+.phrase.typing { opacity: 1; color: var(--text-primary-glow);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px var(--brand-active);
     animation: fadeIn 0.5s ease-out;
 }
-.phrase.fading {
-    opacity: 0;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+.phrase.fading { opacity: 0; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Foreground content: must sit above the anamnesis layer */
-.canvas-nav, .canvas-content {
-    position: relative;
-    z-index: 1;
-    background: none; /* Make sure they are transparent to the anamnesis behind them */
-}
-.canvas-nav { padding-top: 1rem; }
-.header, .group-title, .nav-item { color: var(--text-secondary-dark); }
+/* Foreground content: sits above anamnesis */
+.canvas-nav, .canvas-content { position: relative; z-index: 1; background: none; }
+.canvas-nav { user-select: none; -webkit-user-select: none; /* 1%: Disable text selection on UI */ }
+.canvas-content { overflow-y: auto; } /* Allows content scrolling */
+.header, .group-title, .nav-item { color: var(--text-secondary-dark); cursor: pointer; /* 1%: Adaptive cursor */ }
 .header { font-weight: 700; color: var(--text-primary-glow); }
 .nav-item.active { color: var(--brand-active); }
-.content-title { font-size: 6rem; line-height: 1; color: #fff; margin-bottom: 2rem; }
-/* Everything else... */
+.content-title { font-size: 6rem; line-height: 1; color: #fff; margin-bottom: 2rem; user-select: none; -webkit-user-select: none; /* 1% */ }
+.content-view { display: none; will-change: opacity; /* 1%: Hardware acceleration */ }
+.content-view.active { display: block; animation: contentFadeIn 0.5s ease; }
+@keyframes contentFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* --- The Utility Panel --- */
-.utility-panel {
-    padding: 3rem 2rem;
-    background: var(--background-charcoal);
-    border-left: 1px solid var(--border-charcoal);
-}
-.info-card {
-    background: var(--panel-charcoal);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border-charcoal);
-}
+/* Utility panel: the charcoal monolith */
+.utility-panel { padding: 3rem 2rem; background: var(--background-charcoal); border-left: 1px solid var(--border-charcoal); user-select: none; -webkit-user-select: none; /* 1% */ }
+.info-card { background: var(--panel-charcoal); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border-charcoal); }
 .info-card h3 { color: var(--text-secondary-dark); }
 .info-row { color: var(--text-secondary-dark); }
 .info-row .value { color: var(--text-primary-glow); }
 .info-row .value.active { color: var(--brand-active); }
+
+/* 1%: Intentional keyboard focus states */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--brand-active); outline-offset: 3px; }
+a, button { outline: none; }

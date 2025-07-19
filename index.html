@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Aegis - The Final Truth</title>
+    <title>Project Aegis - The UX Challenge</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- 1% ENHANCEMENT: Preload the primary font for faster rendering and to avoid FOUT. -->
+    <link rel="preload" href="/fonts/NAGO.otf" as="font" type="font/otf" crossorigin>
     
-    <link rel="stylesheet" href="style.css">
+    <!-- 1% ENHANCEMENT: Link to the Web App Manifest for app-like behavior on mobile. -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<!-- 1% ENHANCEMENT: A graceful failure state for users with JavaScript disabled. -->
+<noscript>
+    <div style="width:100%; height:100vh; display:grid; place-items:center; background:#111; color:white;">
+        This experience requires JavaScript to be enabled. Please check your browser settings.
+    </div>
+</noscript>
+
 <div class="aegis-app">
-    <!-- The structure is the same, but the heart has been replaced -->
     <main class="creation-canvas">
-        
-        <!-- THE NEW HEART: The Anamnesis Grid Layer -->
-        <!-- This grid will be populated by JavaScript to simulate typing. -->
         <div id="anamnesis-grid" class="anamnesis-layer"></div>
         
         <nav class="canvas-nav">
@@ -32,20 +37,22 @@
         </nav>
         
         <section class="canvas-content">
-             <!-- The content views remain here -->
              <div id="submission" class="content-view active">
                 <h1 class="content-title">My<br>Submission</h1>
              </div>
              <div id="brief" class="content-view">
                 <h1 class="content-title">The<br>Brief</h1>
             </div>
-            <!-- etc. -->
+             <div id="resources" class="content-view">
+                <h1 class="content-title">The<br>Resources</h1>
+            </div>
+            <div id="judges" class="content-view">
+                <h1 class="content-title">The<br>Judges</h1>
+            </div>
         </section>
-
     </main>
     
     <aside class="utility-panel">
-         <!-- The utility panel content is unchanged -->
          <div class="info-card">
             <h3>Project Status</h3>
             <div class="info-row"><span>Stage</span><span class="value">Design</span></div>
