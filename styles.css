@@ -15,6 +15,31 @@
     font-weight: normal; font-style: normal;
 }
 
+/* Alte Haas Grotesk */
+@font-face {
+    font-family: 'Alte Haas Grotesk';
+    src: url('fonts/AlteHaasGroteskRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Alte Haas Grotesk';
+    src: url('fonts/AlteHaasGroteskBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Helvetica Neue ET Pro */
+@font-face {
+    font-family: 'Helvetica Neue ET Pro';
+    src: url('fonts/HelveticaNeueETPro55Roman.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --background-charcoal: #111111;
     --panel-charcoal: #1A1A1A;
@@ -22,7 +47,7 @@
     --text-primary-glow: #EAEAEA;
     --text-secondary-dark: #767676;
     --brand-active: #0091FF;
-    --font-main: 'NAGO', sans-serif;
+    --font-main: 'Alte Haas Grotesk', 'Helvetica Neue ET Pro', Arial, sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; 
